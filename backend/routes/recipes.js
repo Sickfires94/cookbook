@@ -23,7 +23,7 @@ router.post("/add", async (req, res) => {
     try{
     //if(!req.user.admin) return res.status(401).json({msg: "NOT AUTHORIZED"})
 
-    const {name, description, ingredients} = res.body
+    const {name, description, ingredients} = req.body
     const recipe = new Recipes({name, description, ingredients});
     await recipe.save();
     return res.status(200).json(recipe);
